@@ -8,11 +8,11 @@ addons:
   - 54.211.23.124
 before_install:
 - openssl aes-256-cbc -K $encrypted_42ccb05a182a_key -iv $encrypted_42ccb05a182a_iv
-  -in google-aws.pem.enc -out ~\/Documents/aws/google-aws.pem -d
+  -in google-aws.pem.enc -out google-aws.pem -d
 before_deploy:
 - eval "$(ssh-agent -s)"
-- chmod 600 $TRAVIS_BUILD_DIR/google-aws
-- ssh-add $TRAVIS_BUILD_DIR/google-aws
+- chmod 600 $TRAVIS_BUILD_DIR/google-aws.pem
+- ssh-add $TRAVIS_BUILD_DIR/google-aws.pem
 deploy:
   skip_cleanup: true
   provider: script

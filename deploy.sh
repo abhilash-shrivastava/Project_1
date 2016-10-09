@@ -6,7 +6,7 @@ echo "deploying to aws"
 ssh -v ubuntu@ec2-54-167-25-16.compute-1.amazonaws.com <<ubuntu
     echo "SSH connection done"
     cd ~/apps/Project_1
-    git pull github deploy
+    git pull github dynamo-db
     npm install
     sudo npm install forever -g
     forever start -c "npm start" ./

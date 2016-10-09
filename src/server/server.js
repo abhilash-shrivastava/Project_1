@@ -116,7 +116,7 @@ var createTable = function () {
 var params = {
   TableName:table,
   Item:{
-    "student_ID": 915600053,
+    "student_ID": 916400061,
     "first_name": 'Kartik',
     "last_name" : 'Bholla',
     "email"     : 'kbholla@mail.sfsu.edu',
@@ -148,7 +148,7 @@ var item = {
   "GPA"       : 4
 };
 
-// addNewItem(params);
+addNewItem(params);
 // updateItem(item);
 // deleteItem(915600053);
 // readItem(915600053);

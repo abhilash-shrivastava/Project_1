@@ -49,7 +49,7 @@ var defaultConfig = {
 
   devServer: {
     host: '0.0.0.0',
-    port: 80,
+    port: 8080,
     historyApiFallback: true,
     watchOptions: { aggregateTimeout: 300, poll: 1000 }
   },

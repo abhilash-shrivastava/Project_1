@@ -6,6 +6,8 @@ addons:
   ssh_known_hosts:
   - ec2-54-211-23-124.compute-1.amazonaws.com
   - 54.211.23.124
+  - ec2-52-88-156-243.us-west-2.compute.amazonaws.com
+  - 52.88.156.243
 before_install:
 - openssl aes-256-cbc -K $encrypted_42ccb05a182a_key -iv $encrypted_42ccb05a182a_iv
   -in google-aws.pem.enc -out google-aws.pem -d

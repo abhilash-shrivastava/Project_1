@@ -3,6 +3,10 @@
 echo "deploying to aws"
 
 # log into aws everything under this is executed under the ubuntu user
-ssh ubuntu@ec2-54-211-23-124.compute-1.amazonaws.com <<ubuntu
+ssh -v ubuntu@ec2-54-167-25-16.compute-1.amazonaws.com <<ubuntu
     echo "SSH connection done"
+    cd ~/apps/Project_1
+    git pull github deploy
+    npm install
+    npm start
 ubuntu

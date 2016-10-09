@@ -1,11 +1,13 @@
 sudo: false
 language: node_js
 
+node_js:
+  - "node"
 script: echo "No test please"
 addons:
   ssh_known_hosts:
-  - ec2-54-211-23-124.compute-1.amazonaws.com
-  - 54.211.23.124
+  - ec2-54-167-25-16.compute-1.amazonaws.com
+  - 54.167.25.16
 before_install:
 - openssl aes-256-cbc -K $encrypted_42ccb05a182a_key -iv $encrypted_42ccb05a182a_iv
   -in google-aws.pem.enc -out google-aws.pem -d

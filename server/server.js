@@ -1,5 +1,13 @@
 var AWS = require("aws-sdk");
 var uuid = require('node-uuid');
+var express = require('express');
+var app = express();
+
+
+app.get('/add-student', function (req, res) {
+  console.log(req.body);
+  // res.send('Hello World!');
+});
 
 var credentials = new AWS.SharedIniFileCredentials({profile: 'default'});
 AWS.config.credentials = credentials;
@@ -113,6 +121,9 @@ var createTable = function () {
   });
 };
 
+app.listen(7000, function () {
+  console.log('Example app listening on port 7000!');
+});
 // var params = {
 //   TableName:table,
 //   Item:{

@@ -8,10 +8,6 @@
     "server": "webpack-dev-server --inline --colors --progress --display-error-details --display-cached --host 0.0.0.0 --port 8080  --content-base src",
     "start": "npm run server"
   },
-  "contributors": [
-    "Rob Wormald <robwormald@gmail.com>",
-    "PatrickJS <github@gdi2290.com>"
-  ],
   "license": "MIT",
   "devDependencies": {
     "@types/core-js": "^0.9.32",
@@ -56,9 +52,5 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/angular/angular2-seed.git"
-  },
-  "bugs": {
-    "url": "https://github.com/angular/angular2-seed/issues"
-  },
-  "homepage": "https://github.com/angular/angular2-seed#readme"
+  }
 }

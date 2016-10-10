@@ -1,3 +1,22 @@
-<main>
-    <h1>Hello from Angular App with Webpack</h1>
-</main>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <img src="http://www.sfsu.edu/logo.png" class="img-thumbnail" alt="SFSU" width="50px" height="50px">
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" routerLink="" routerLinkActive="active">CSC-890</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a routerLink="/add" routerLinkActive="active">Add Student</a></li>
+            <li><a href="#">View Record</a></li>
+            <li><a href="#">Update Record</a></li>
+            <li><a href="#">Delete Record</a></li>
+        </ul>
+    </div>
+</nav>
+<router-outlet></router-outlet>
+
+
+<video autoplay loop muted poster="screenshot.jpg" id="background">
+    <source src="./../resource/background.mp4" type="video/mp4">
+</video>

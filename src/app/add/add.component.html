@@ -1,76 +1,52 @@
-<div class="container">
+<div class="container" [hidden]="submitted">
     <h2>Student Details</h2>
     <form class="form-horizontal" (ngSubmit)="onSubmit()">
         <div class="form-group">
             <label class="control-label col-sm-2" for="student_ID">Student Id:</label>
-            <div class="col-sm-10">
+            <div class="col-sm-6">
                 <input name="student_ID" type="number" [(ngModel)]="student.student_ID" class="form-control" id="student_ID" placeholder="Enter Student Id" required>
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-sm-2" for="first_name">First Name:</label>
-            <div class="col-sm-10">
+            <div class="col-sm-6">
                 <input name="first_name" type="text" [(ngModel)]="student.first_name" class="form-control" id="first_name" placeholder="Enter First Name">
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-sm-2" for="last_name">Last Name:</label>
-            <div class="col-sm-10">
+            <div class="col-sm-6">
                 <input name="first_name" type="text" [(ngModel)]="student.last_name" class="form-control" id="last_name" placeholder="Enter Last Name">
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-sm-2" for="email">Email:</label>
-            <div class="col-sm-10">
+            <div class="col-sm-6">
                 <input name="email" type="email" [(ngModel)]="student.email" class="form-control" id="email" placeholder="Enter email">
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-sm-2" for="address_line_1">Address Line 1:</label>
-            <div class="col-sm-10">
-                <input name="address_line_1" type="text" [(ngModel)]="address.address_line_1" class="form-control" id="address_line_1" placeholder="Enter Address Line 1">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="address_line_2">Address Line 2:</label>
-            <div class="col-sm-10">
-                <input name="address_line_2" type="text" [(ngModel)]="address.address_line_2" class="form-control" id="address_line_2" placeholder="Enter Address Line 2">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="city">City:</label>
-            <div class="col-sm-10">
-                <input name="city" type="text" [(ngModel)]="address.city" class="form-control" id="city" placeholder="Enter City">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="current_state">State:</label>
-            <div class="col-sm-10">
-                <input name="current_state" type="text" [(ngModel)]="address.current_state" class="form-control" id="current_state" placeholder="Enter State">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="country">Country</label>
-            <div class="col-sm-10">
-                <input name="country" type="text" [(ngModel)]="address.country" class="form-control" id="country" placeholder="Enter Country">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="zip_code">Zip Code:</label>
-            <div class="col-sm-10">
-                <input name="zip_code" type="text" [(ngModel)]="address.zip_code" class="form-control" id="zip_code" placeholder="Enter Zip Code">
+            <label class="control-label col-sm-2" for="address">Address:</label>
+            <div class="col-sm-6">
+                <input name="address" type="text" [(ngModel)]="student.address" class="form-control" id="address" placeholder="Enter Address">
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-sm-2" for="GPA">GPA:</label>
-            <div class="col-sm-10">
-                <input name="GPA" type="number" [(ngModel)]="student.GPA" class="form-control" id="GPA" placeholder="Enter GPA">
+            <div class="col-sm-6">
+                <input name="GPA" type="number" step="0.01" [(ngModel)]="student.GPA" class="form-control" id="GPA" placeholder="Enter GPA">
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-default">Submit</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
             </div>
         </div>
     </form>
+</div>
+<div class="container" [hidden]="!submitted">
+    <div class="col-md-4 text-center">
+        <h2>Student Record Submitted!</h2>
+        <button name="singlebutton" (click)="submitted=false; student=[]" class="btn btn-primary">Add Another Student</button>
+    </div>
 </div>

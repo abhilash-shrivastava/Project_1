@@ -1,0 +1,26 @@
+
+<div class="container">
+    <h2>Student Records</h2>
+    <table class="table table-hover table-bordered">
+        <thead>
+        <tr class="danger">
+            <th>Student ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>GPA</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor= "let student of students" class="success">
+            <td>{{student.student_ID}}</td>
+            <td>{{student.first_name}}</td>
+            <td>{{student.last_name}}</td>
+            <td>{{student.email}}</td>
+            <td>{{student.address}}</td>
+            <td>{{student.GPA}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>

@@ -2,11 +2,29 @@ var AWS = require("aws-sdk");
 var uuid = require('node-uuid');
 var express = require('express');
 var app = express();
+var cors = require('cors');
+const bodyParser= require('body-parser');
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(cors());
+app.use(bodyParser.json());
+app.all('*', function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+});
 
+app.post('/add-student', function (req, res) {
+  res.connection.setTimeout(0);
+  addNewItem(req.body);
+  res.send('200');
+});
 
-app.get('/add-student', function (req, res) {
-  console.log(req.body);
-  // res.send('Hello World!');
+app.get('/view-all', function (req, res) {
+  res.connection.setTimeout(0);
+  viewAllItem(function (response) {
+    res.send(response);
+  });
 });
 
 var credentials = new AWS.SharedIniFileCredentials({profile: 'default'});
@@ -20,6 +38,35 @@ var dynamodb = new AWS.DynamoDB();
 
 var docClient = new AWS.DynamoDB.DocumentClient();
 var table = "Students";
+
+var viewAllItem = function (callback) {
+  var students = [];
+  var params = {
+    TableName: table
+  };
+  docClient.scan(params, onScan);
+
+  function onScan(err, data) {
+    if (err) {
+      console.error("Unable to scan the table. Error JSON:", JSON.stringify(err, null, 2));
+    } else {
+      // print all the movies
+      console.log("Scan succeeded.");
+      data.Items.forEach(function(student) {
+        students.push(student);
+        console.log(student);
+      });
+
+      // continue scanning if we have more movies
+      if (typeof data.LastEvaluatedKey != "undefined") {
+        console.log("Scanning for more...");
+        params.ExclusiveStartKey = data.LastEvaluatedKey;
+        docClient.scan(params, onScan);
+      }
+    }
+    callback(students);
+  }
+};
 
 var readItem = function (student_id) {
   var params = {
@@ -86,7 +133,11 @@ var updateItem = function (item) {
     }
   });
 };
-var addNewItem = function (params) {
+var addNewItem = function (item) {
+  var params = {
+  TableName:table,
+  Item: item
+};
   console.log("Adding a new item...");
   docClient.put(params, function(err, data) {
     if (err) {

@@ -10,5 +10,5 @@ ssh -v ubuntu@ec2-54-167-25-16.compute-1.amazonaws.com <<ubuntu
     npm install
     sudo npm install forever -g
     forever start -c "npm start" ./
-    node src/server/server.js
+    node ./server/server.js
 ubuntu

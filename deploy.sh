@@ -7,9 +7,9 @@ ssh -v ubuntu@ec2-54-167-25-16.compute-1.amazonaws.com <<ubuntu
     echo "SSH connection done"
     cd ~/apps/Project_1
     git pull github master
-    apt-get update
-    apt-get install nodejs
-    apt-get install npm
+    apt-get -y update
+    apt-get -y install nodejs
+    apt-get -y install npm
     npm install
     sudo npm install forever -g
     forever start -c "npm start" ./

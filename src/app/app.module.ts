@@ -7,6 +7,8 @@ import {HomeComponent} from "./home/home.component";
 import { FormsModule }   from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
 import {ReadComponent} from "./read/read.component";
+import {UpdateComponent} from "./update/update.component";
+import {DeleteComponent} from "./delete/delete.component";
 
 
 
@@ -19,14 +21,18 @@ import {ReadComponent} from "./read/read.component";
         RouterModule.forRoot([
             { path: '', component: HomeComponent },
             { path: 'add', component: AddComponent },
-            { path: 'read', component: ReadComponent }
+            { path: 'read', component: ReadComponent },
+            { path: 'update', component: UpdateComponent },
+            { path: 'delete', component: DeleteComponent }
         ]),
     ],
     declarations: [
         AppComponent,
         HomeComponent,
         AddComponent,
-        ReadComponent
+        ReadComponent,
+        UpdateComponent,
+        DeleteComponent
     ],
     bootstrap: [ AppComponent ]
 })

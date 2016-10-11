@@ -27,6 +27,18 @@ app.get('/view-all', function (req, res) {
   });
 });
 
+app.post('/update-student', function (req, res) {
+  res.connection.setTimeout(0);
+  updateItem(req.body);
+  res.send('200');
+});
+
+app.post('/delete-student', function (req, res) {
+  res.connection.setTimeout(0);
+  deleteItem(req.body);
+  res.send('200');
+});
+
 var credentials = new AWS.SharedIniFileCredentials({profile: 'default'});
 AWS.config.credentials = credentials;
 AWS.config.update({
@@ -84,11 +96,11 @@ var readItem = function (student_id) {
     }
   });
 };
-var deleteItem = function (student_id) {
+var deleteItem = function (item) {
   var params = {
     TableName:table,
     Key:{
-      "student_ID":student_id
+      "student_ID":item.student_ID
     }
   };
   console.log("Attempting a conditional delete...");
@@ -107,18 +119,12 @@ var updateItem = function (item) {
     Key:{
       "student_ID": item.student_ID
     },
-    UpdateExpression: "set first_name=:fn, last_name=:ln, email=:e, address.address_line_1=:af, address.address_line_2=:as, address.city=:ci," +
-    " address.current_state=:st, address.country=:ac, address.zip_code=:az, GPA=:gpa",
+    UpdateExpression: "set first_name=:fn, last_name=:ln, email=:e, address=:ad, GPA=:gpa",
     ExpressionAttributeValues:{
       ":fn":item.first_name,
       ":ln":item.last_name,
       ":e":item.email,
-      ":af":item.address.address_line_1,
-      ":as":item.address.address_line_2,
-      ":ci":item.address.city,
-      ":st":item.address.current_state,
-      ":ac":item.address.country,
-      ":az":item.address.zip_code,
+      ":ad":item.address,
       ":gpa":item.GPA
     },
     ReturnValues:"UPDATED_NEW"
